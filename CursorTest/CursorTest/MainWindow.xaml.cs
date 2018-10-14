@@ -51,7 +51,7 @@ namespace CursorTest
               Brushes.Red,
               Brushes.Blue,
               Brushes.Green,
-              Brushes.Pink,
+              Brushes.YellowGreen,
               Brushes.Brown
             };
 
