@@ -37,14 +37,15 @@ namespace CursorTest
                 if (sum == (FirstAddent + SecondAddent))
                 {
                     lblSum.Content = sum;
-                    lblSum.Background = Brushes.Green;
+                    Root.Background = Brushes.Green;
+                    SwapOptions(false);
                     //System.Threading.Thread.Sleep(5000);
                     //CreateProblem();
                 }
                 else
                 {
-                    lblSum.Content = sum;
-                    lblSum.Background = Brushes.Red;
+
+                    Root.Background = Brushes.Red;
                 }
                 //MessageBox.Show(((Button)sender).Content.ToString());
                 
@@ -55,9 +56,16 @@ namespace CursorTest
                 throw;
             }
         }
-
+        private void SwapOptions(bool flag)
+        {
+            Opt1.Visibility = flag? Visibility.Visible:Visibility.Hidden;
+            Opt2.Visibility = flag ? Visibility.Visible : Visibility.Hidden;
+            Opt3.Visibility = flag ? Visibility.Visible : Visibility.Hidden;
+            Opt4.Visibility = flag ? Visibility.Visible : Visibility.Hidden;
+        }
         private void CreateProblem()
         {
+            SwapOptions(true);
             FirstAddent = GetRandomNumber(10);
             SecondAddent = GetRandomNumber(10);
 
@@ -106,6 +114,21 @@ namespace CursorTest
             var randomNumber = rand.Next(maxim);
             return randomNumber;
 
+        }
+
+        private void Opt41_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                lblSum.Content = "___";
+                Root.Background = Brushes.White;
+                CreateProblem();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

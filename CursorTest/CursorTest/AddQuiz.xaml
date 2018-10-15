@@ -21,7 +21,7 @@
 
 
     <Canvas  Name="Canvs" Cursor="{StaticResource OpenHandCursor}"  Height="800" Width="1000" Background="White" HorizontalAlignment="Stretch">
-        <Grid   Background="White" Width="1000" Height="800">
+        <Grid Name="Root"   Background="White" Width="1000" Height="800">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"></ColumnDefinition>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
@@ -49,6 +49,7 @@
                 <Button Click="Opt1_Click" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="170" Width="230" Height="Auto" Grid.Column="0" Name="Opt1">11</Button>
                 <Button Click="Opt1_Click" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="170" Width="230" Height="Auto" Grid.Column="1" Name="Opt2">12</Button>
                 <Button Click="Opt1_Click" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="170" Width="230" Height="Auto" Grid.Column="2" Name="Opt3">13</Button>
+                <Button Click="Opt41_Click" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="170" Width="230" Height="Auto" Grid.Column="3" Name="Opt41">>></Button>
                 <Button Click="Opt1_Click" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="170" Width="230" Height="Auto" Grid.Column="3" Name="Opt4">14</Button>
             </Grid>
         </Grid>
