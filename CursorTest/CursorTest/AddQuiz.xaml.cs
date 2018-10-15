@@ -20,6 +20,8 @@ namespace CursorTest
     public partial class AddQuiz : Window
     {
         Random rand = new Random();
+        int FirstAddent;
+        int SecondAddent;
 
         public AddQuiz()
         {
@@ -31,9 +33,21 @@ namespace CursorTest
         {
             try
             {
-                
+                var sum = int.Parse(((Button)sender).Content.ToString());
+                if (sum == (FirstAddent + SecondAddent))
+                {
+                    lblSum.Content = sum;
+                    lblSum.Background = Brushes.Green;
+                    //System.Threading.Thread.Sleep(5000);
+                    //CreateProblem();
+                }
+                else
+                {
+                    lblSum.Content = sum;
+                    lblSum.Background = Brushes.Red;
+                }
                 //MessageBox.Show(((Button)sender).Content.ToString());
-                CreateProblem();
+                
             }
             catch (Exception)
             {
@@ -44,18 +58,29 @@ namespace CursorTest
 
         private void CreateProblem()
         {
-            var FirstAddent = GetRandomNumber(10);
-            var SecondAddent = GetRandomNumber(10);
+            FirstAddent = GetRandomNumber(10);
+            SecondAddent = GetRandomNumber(10);
+
             lblFirstAddent.Content = FirstAddent;
             lblSecondAddent.Content = SecondAddent;
+            List<int> options = new List<int>();
+            while (options.Count < 4)
+            {
+                var option = GetRandomNumber(20);
+                if (options.Contains(option) || option == (FirstAddent + SecondAddent))
+                {
+                    continue;
+                }
+                options.Add(option);
+            }
 
-            Opt1.Content = GetRandomNumber(20);
-            Opt2.Content = GetRandomNumber(20);
-            Opt3.Content = GetRandomNumber(20);
-            Opt4.Content = GetRandomNumber(20);
+            Opt1.Content = options[0];
+            Opt2.Content = options[1];
+            Opt3.Content = options[2];
+            Opt4.Content = options[3];
 
             var CorrectChoice = GetRandomNumber(3);
-            MessageBox.Show(CorrectChoice.ToString());
+            
             switch (CorrectChoice)
             {
                 case 0:

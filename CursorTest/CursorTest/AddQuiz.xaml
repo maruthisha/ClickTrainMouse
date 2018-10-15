@@ -38,7 +38,7 @@
             <Label Height="Auto" Width="Auto" Grid.Column="1" Name="AddSign">+</Label>
             <Label Height="Auto" Width="Auto" Grid.Column="2" Name="lblSecondAddent">1</Label>
             <Label Height="Auto" Width="Auto" Grid.Column="3" Name="EqualSign">=</Label>
-            <Label Height="Auto" Width="Auto" Grid.Column="4" Name="lblSum">10</Label>
+            <Label Height="Auto" Width="Auto" Grid.Column="4" Name="lblSum">___</Label>
             <Grid Grid.Row="1" Grid.ColumnSpan="5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
