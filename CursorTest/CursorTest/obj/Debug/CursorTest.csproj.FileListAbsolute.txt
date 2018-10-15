@@ -28,3 +28,5 @@ C:\Users\maruthishangar_l\Documents\GitHub\ClickTrainMouse\CursorTest\CursorTest
 C:\Users\maruthishangar_l\Documents\GitHub\ClickTrainMouse\CursorTest\CursorTest\obj\Debug\CursorTest.csproj.CoreCompileInputs.cache
 C:\Users\maruthishangar_l\Documents\GitHub\ClickTrainMouse\CursorTest\CursorTest\obj\Debug\CursorTest.exe
 C:\Users\maruthishangar_l\Documents\GitHub\ClickTrainMouse\CursorTest\CursorTest\obj\Debug\CursorTest.pdb
+C:\Users\maruthishangar_l\Documents\GitHub\ClickTrainMouse\CursorTest\CursorTest\obj\Debug\AddQuiz.g.cs
+C:\Users\maruthishangar_l\Documents\GitHub\ClickTrainMouse\CursorTest\CursorTest\obj\Debug\AddQuiz.baml
