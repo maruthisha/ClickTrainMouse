@@ -20,8 +20,11 @@
 
 
 
-    <Canvas  Name="Canvs" Cursor="{StaticResource OpenHandCursor}"  Height="800" Width="1500" Background="Black" HorizontalAlignment="Stretch">
-        <Grid Name="Root"   Background="Black" Width="1500" Height="800">
+    <Canvas  Name="Canvs" Cursor="{StaticResource OpenHandCursor}"  Height="1500" Width="2000" Background="Gray" HorizontalAlignment="Stretch">
+        <Button Background="Black" Foreground="White" Click="Finish_Click" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="225" Width="158" Height="294" Name="Finish" Canvas.Left="30" Canvas.Top="38">X</Button>
+        <Label Height="270" Width="544" HorizontalContentAlignment="Center" Foreground="Black" Name="lblTime" FontSize="225" FontWeight="Bold" Canvas.Left="327" Canvas.Top="5">236</Label>
+
+        <Grid Name="Root" Background="Black" Width="1500" Height="800" Margin="250,275,250,150">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="450*"></ColumnDefinition>
                 <ColumnDefinition Width="225*"></ColumnDefinition>
@@ -53,5 +56,6 @@
                 <Button Click="Opt1_Click" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="225" Width="300" Height="Auto" Grid.Column="3" Name="Opt4">14</Button>
             </Grid>
         </Grid>
+        <Label Height="270" Width="544" HorizontalContentAlignment="Center" Foreground="Black" x:Name="lblTotalTime" FontSize="225" FontWeight="Bold" Canvas.Left="1152" Content="236"/>
     </Canvas>
 </Window>

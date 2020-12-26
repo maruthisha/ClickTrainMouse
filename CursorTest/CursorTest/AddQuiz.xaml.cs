@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace CursorTest
 {
@@ -24,18 +25,69 @@ namespace CursorTest
         int SecondFactor;
         char[] signs = { '+', 'x', '-', '/' };
         char selectedSign = '+';
+        int timeElapsed = 0;
+        int totalTimer = 0;
+        System.Windows.Threading.DispatcherTimer dispatcherTimer;
+        DispatcherTimer overallTimer;
+        List<String> result = new System.Collections.Generic.List<string>();
+        int problemNumber = 0;
 
         public AddQuiz()
         {
             InitializeComponent();
+            
+            lblTime.Content = "0";
+            dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
+            dispatcherTimer.Tick += dispatcherTimer_Tick;
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+
+            overallTimer = new System.Windows.Threading.DispatcherTimer();
+            overallTimer.Tick += totalTimer_Tick;
+            overallTimer.Interval = new TimeSpan(0, 0, 1);
+            overallTimer.Start();
             CreateProblem();
+        }
+
+        private void totalTimer_Tick(object sender, EventArgs e)
+        {
+            totalTimer++;
+
+            if (totalTimer > 180)
+            {
+                overallTimer.Stop();
+                finishTest();
+                totalTimer = 0;
+                overallTimer.Start();
+                result = new List<string>();
+                CreateProblem();
+            }
+
+            lblTotalTime.Content = totalTimer;
+        }
+
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            timeElapsed++;
+            
+
+            lblTime.Content = timeElapsed;
+            
+        }
+
+        private void finishTest()
+        {
+            MessageBox.Show(string.Join(Environment.NewLine, result.ToArray()));
         }
 
         private void Opt1_Click(object sender, RoutedEventArgs e)
         {
+            dispatcherTimer.Stop();
+
             try
             {
                 var answer = int.Parse(((Button)sender).Content.ToString());
+                result.Add(String.Format("{5}. {0} {1} {2} = {3} \t {4}", FirstFactor, selectedSign, SecondFactor, answer, timeElapsed, problemNumber));
+
                 if (answer == getCorrectAnswer())
                 {
                     lblSum.Content = answer;
@@ -46,7 +98,7 @@ namespace CursorTest
                 }
                 else
                 {
-
+                    dispatcherTimer.Start();
                     Root.Background = Brushes.Red;
                 }
                 //MessageBox.Show(((Button)sender).Content.ToString());
@@ -69,9 +121,10 @@ namespace CursorTest
         private void getFactors()
         {
             int maxFactor = 10;
-            if (selectedSign == '+' || selectedSign == '-')
+             if (selectedSign == '+' || selectedSign == '-')
+            //if (selectedSign != '/')
             {
-                maxFactor = 15;
+                maxFactor = 40;
             }
             var firstFactor = GetRandomNumber(maxFactor);
             var secondFactor = GetRandomNumber(maxFactor);
@@ -124,6 +177,16 @@ namespace CursorTest
 
         private void CreateProblem()
         {
+            problemNumber++;
+
+            timeElapsed = 0;
+            if (dispatcherTimer != null)
+            {
+                dispatcherTimer.Start();
+            }
+            
+            
+
             SwapOptions(true);
 
             getProblemType();
@@ -151,21 +214,26 @@ namespace CursorTest
             Opt3.Content = options[2];
             Opt4.Content = options[3];
 
-            var CorrectChoice = GetRandomNumber(3);
-            var correctAnser = getCorrectAnswer();
-            switch (CorrectChoice)
+            var correctChoice = GetRandomNumber(3);
+            var correctAnswer = getCorrectAnswer();
+
+            if (options.Contains(correctAnswer))
+            {
+                return;
+            }
+            switch (correctChoice)
             {
                 case 0:
-                    Opt1.Content = correctAnser;
+                    Opt1.Content = correctAnswer;
                     break;
                 case 1:
-                    Opt2.Content = correctAnser;
+                    Opt2.Content = correctAnswer;
                     break;
                 case 2:
-                    Opt3.Content = correctAnser;
+                    Opt3.Content = correctAnswer;
                     break;
                 case 3:
-                    Opt4.Content = correctAnser;
+                    Opt4.Content = correctAnswer;
                     break;
                 default:
                     break;
@@ -192,6 +260,19 @@ namespace CursorTest
             {
 
                 throw;
+            }
+        }
+
+        private void Finish_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                finishTest();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }
