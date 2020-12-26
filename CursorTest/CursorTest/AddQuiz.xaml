@@ -20,25 +20,25 @@
 
 
 
-    <Canvas  Name="Canvs" Cursor="{StaticResource OpenHandCursor}"  Height="800" Width="1000" Background="White" HorizontalAlignment="Stretch">
-        <Grid Name="Root"   Background="White" Width="1000" Height="800">
+    <Canvas  Name="Canvs" Cursor="{StaticResource OpenHandCursor}"  Height="800" Width="1500" Background="Black" HorizontalAlignment="Stretch">
+        <Grid Name="Root"   Background="Black" Width="1500" Height="800">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"></ColumnDefinition>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width="2*"></ColumnDefinition>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="300*"></ColumnDefinition>
+                <ColumnDefinition Width="217*"></ColumnDefinition>
+                <ColumnDefinition Width="266*"></ColumnDefinition>
+                <ColumnDefinition Width="185*"></ColumnDefinition>
+                <ColumnDefinition Width="232*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*"></RowDefinition>
-               
-                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="353*"></RowDefinition>
+
+                <RowDefinition Height="447*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Label Height="Auto" Width="Auto" Grid.Column="0" Name="lblFirstAddent">1</Label>
-            <Label Height="Auto" Width="Auto" Grid.Column="1" Name="AddSign">+</Label>
-            <Label Height="Auto" Width="Auto" Grid.Column="2" Name="lblSecondAddent">1</Label>
-            <Label Height="Auto" Width="Auto" Grid.Column="3" Name="EqualSign">=</Label>
-            <Label Height="Auto" Width="Auto" Grid.Column="4" Name="lblSum">___</Label>
+            <Label Height="278" Width="154" Grid.Column="0" Foreground="White" Name="lblFirstAddent" FontSize="225" FontWeight="Bold" Margin="73,40,73,35">1</Label>
+            <Label Height="278" Width="150" Grid.Column="1" Foreground="White" Name="lblSign" FontSize="225" FontWeight="Bold" Margin="34,40,33,35">+</Label>
+            <Label Height="278" Width="154" Grid.Column="2" Foreground="White" Name="lblSecondAddent" FontSize="225" FontWeight="Bold" Margin="57,40,55,35">1</Label>
+            <Label Height="278" Width="150" Grid.Column="3" Foreground="White" Name="EqualSign" FontSize="225" FontWeight="Bold" Margin="17,40,18,35">=</Label>
+            <Label Height="278" Width="218" Grid.Column="4" Foreground="White" Name="lblSum" FontSize="225" FontWeight="Bold" Margin="8,40,6,35">___</Label>
             <Grid Grid.Row="1" Grid.ColumnSpan="5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
@@ -46,11 +46,11 @@
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Button Click="Opt1_Click" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="170" Width="230" Height="Auto" Grid.Column="0" Name="Opt1">11</Button>
-                <Button Click="Opt1_Click" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="170" Width="230" Height="Auto" Grid.Column="1" Name="Opt2">12</Button>
-                <Button Click="Opt1_Click" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="170" Width="230" Height="Auto" Grid.Column="2" Name="Opt3">13</Button>
-                <Button Click="Opt41_Click" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="170" Width="230" Height="Auto" Grid.Column="3" Name="Opt41">>></Button>
-                <Button Click="Opt1_Click" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="170" Width="230" Height="Auto" Grid.Column="3" Name="Opt4">14</Button>
+                <Button Click="Opt1_Click" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="225" Width="300" Height="Auto" Grid.Column="0" Name="Opt1">11</Button>
+                <Button Click="Opt1_Click" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="225" Width="300" Height="Auto" Grid.Column="1" Name="Opt2">12</Button>
+                <Button Click="Opt1_Click" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="225" Width="300" Height="Auto" Grid.Column="2" Name="Opt3">13</Button>
+                <Button Click="Opt41_Click" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="225" Width="300" Height="Auto" Grid.Column="3" Name="Opt41">></Button>
+                <Button Click="Opt1_Click" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="225" Width="300" Height="Auto" Grid.Column="3" Name="Opt4">14</Button>
             </Grid>
         </Grid>
     </Canvas>

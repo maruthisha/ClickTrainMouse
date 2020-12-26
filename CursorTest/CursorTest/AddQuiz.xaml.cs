@@ -22,6 +22,8 @@ namespace CursorTest
         Random rand = new Random();
         int FirstAddent;
         int SecondAddent;
+        char[] signs = { '+', 'x' };
+        char selectedSign = '+';
 
         public AddQuiz()
         {
@@ -33,10 +35,10 @@ namespace CursorTest
         {
             try
             {
-                var sum = int.Parse(((Button)sender).Content.ToString());
-                if (sum == (FirstAddent + SecondAddent))
+                var answer = int.Parse(((Button)sender).Content.ToString());
+                if (answer == getCorrectAnswer())
                 {
-                    lblSum.Content = sum;
+                    lblSum.Content = answer;
                     Root.Background = Brushes.Green;
                     SwapOptions(false);
                     //System.Threading.Thread.Sleep(5000);
@@ -63,14 +65,43 @@ namespace CursorTest
             Opt3.Visibility = flag ? Visibility.Visible : Visibility.Hidden;
             Opt4.Visibility = flag ? Visibility.Visible : Visibility.Hidden;
         }
+
+        private void getFactors()
+        {
+            FirstAddent = GetRandomNumber(10);
+            SecondAddent = GetRandomNumber(10);
+        }
+
+        private void getProblemType()
+        {
+            var signIndex = GetRandomNumber(2);
+            selectedSign = signs[signIndex];
+            lblSign.Content = selectedSign;
+        }
+
+        private int getCorrectAnswer()
+        {
+            int correctAnswer = 0;
+            switch (selectedSign)
+            {
+                case 'x':
+                    return FirstAddent * SecondAddent;
+                default:
+                    return FirstAddent + SecondAddent;
+            }
+        }
+
         private void CreateProblem()
         {
             SwapOptions(true);
-            FirstAddent = GetRandomNumber(10);
-            SecondAddent = GetRandomNumber(10);
+
+            getFactors();
+
+            getProblemType();
 
             lblFirstAddent.Content = FirstAddent;
             lblSecondAddent.Content = SecondAddent;
+
             List<int> options = new List<int>();
             while (options.Count < 4)
             {
@@ -88,20 +119,20 @@ namespace CursorTest
             Opt4.Content = options[3];
 
             var CorrectChoice = GetRandomNumber(3);
-            
+            var correctAnser = getCorrectAnswer();
             switch (CorrectChoice)
             {
                 case 0:
-                    Opt1.Content = (FirstAddent + SecondAddent);
+                    Opt1.Content = correctAnser;
                     break;
                 case 1:
-                    Opt2.Content = (FirstAddent + SecondAddent);
+                    Opt2.Content = correctAnser;
                     break;
                 case 2:
-                    Opt3.Content = (FirstAddent + SecondAddent);
+                    Opt3.Content = correctAnser;
                     break;
                 case 3:
-                    Opt4.Content = (FirstAddent + SecondAddent);
+                    Opt4.Content = correctAnser;
                     break;
                 default:
                     break;
@@ -121,7 +152,7 @@ namespace CursorTest
             try
             {
                 lblSum.Content = "___";
-                Root.Background = Brushes.White;
+                Root.Background = Brushes.Black;
                 CreateProblem();
             }
             catch (Exception)
