@@ -23,22 +23,22 @@
     <Canvas  Name="Canvs" Cursor="{StaticResource OpenHandCursor}"  Height="800" Width="1500" Background="Black" HorizontalAlignment="Stretch">
         <Grid Name="Root"   Background="Black" Width="1500" Height="800">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="300*"></ColumnDefinition>
-                <ColumnDefinition Width="217*"></ColumnDefinition>
-                <ColumnDefinition Width="266*"></ColumnDefinition>
-                <ColumnDefinition Width="185*"></ColumnDefinition>
-                <ColumnDefinition Width="232*"></ColumnDefinition>
+                <ColumnDefinition Width="450*"></ColumnDefinition>
+                <ColumnDefinition Width="225*"></ColumnDefinition>
+                <ColumnDefinition Width="450*"></ColumnDefinition>
+                <ColumnDefinition Width="200*"></ColumnDefinition>
+                <ColumnDefinition Width="450*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="353*"></RowDefinition>
 
                 <RowDefinition Height="447*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Label Height="278" Width="154" Grid.Column="0" Foreground="White" Name="lblFirstAddent" FontSize="225" FontWeight="Bold" Margin="73,40,73,35">1</Label>
-            <Label Height="278" Width="150" Grid.Column="1" Foreground="White" Name="lblSign" FontSize="225" FontWeight="Bold" Margin="34,40,33,35">+</Label>
-            <Label Height="278" Width="154" Grid.Column="2" Foreground="White" Name="lblSecondAddent" FontSize="225" FontWeight="Bold" Margin="57,40,55,35">1</Label>
-            <Label Height="278" Width="150" Grid.Column="3" Foreground="White" Name="EqualSign" FontSize="225" FontWeight="Bold" Margin="17,40,18,35">=</Label>
-            <Label Height="278" Width="218" Grid.Column="4" Foreground="White" Name="lblSum" FontSize="225" FontWeight="Bold" Margin="8,40,6,35">___</Label>
+            <Label HorizontalContentAlignment="Center" Height="353" Width="381" Grid.Column="0" Foreground="White" Name="lblFirstAddent" FontSize="225" FontWeight="Bold" VerticalAlignment="Bottom">10</Label>
+            <Label Height="353" Width="190" HorizontalContentAlignment="Center" Grid.Column="1" Foreground="White" Name="lblSign" FontSize="225" FontWeight="Bold">+</Label>
+            <Label HorizontalContentAlignment="Center" Height="353" Width="379" Grid.Column="2" Foreground="White" Name="lblSecondAddent" FontSize="225" FontWeight="Bold" Margin="0,0,1,0">10</Label>
+            <Label Height="278" Width="186" Grid.Column="3" Foreground="White" Name="EqualSign" FontSize="225" FontWeight="Bold" Margin="10,40,10,35">=</Label>
+            <Label Height="343" Width="380" Grid.Column="4" Foreground="White" Name="lblSum" FontSize="225" FontWeight="Bold" Margin="0,0,0,10">___</Label>
             <Grid Grid.Row="1" Grid.ColumnSpan="5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>

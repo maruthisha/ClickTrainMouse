@@ -20,9 +20,9 @@ namespace CursorTest
     public partial class AddQuiz : Window
     {
         Random rand = new Random();
-        int FirstAddent;
-        int SecondAddent;
-        char[] signs = { '+', 'x' };
+        int FirstFactor;
+        int SecondFactor;
+        char[] signs = { '+', 'x', '-', '/' };
         char selectedSign = '+';
 
         public AddQuiz()
@@ -68,13 +68,40 @@ namespace CursorTest
 
         private void getFactors()
         {
-            FirstAddent = GetRandomNumber(10);
-            SecondAddent = GetRandomNumber(10);
+            int maxFactor = 10;
+            if (selectedSign == '+' || selectedSign == '-')
+            {
+                maxFactor = 15;
+            }
+            var firstFactor = GetRandomNumber(maxFactor);
+            var secondFactor = GetRandomNumber(maxFactor);
+           
+            if (selectedSign == '-')
+            {
+                firstFactor = firstFactor + secondFactor;
+                //FirstFactor = Math.Max(firstFactor, secondFactor);
+                //SecondFactor = Math.Min(firstFactor, secondFactor);
+                //return;
+            }
+
+            if (selectedSign == '/')
+            {
+                while (firstFactor == 0 || secondFactor == 0)
+                {
+                    firstFactor = GetRandomNumber(maxFactor);
+                    secondFactor = GetRandomNumber(maxFactor);
+                }
+                firstFactor = firstFactor * secondFactor;
+            }
+
+            FirstFactor = firstFactor;
+            SecondFactor = secondFactor;
+            
         }
 
         private void getProblemType()
         {
-            var signIndex = GetRandomNumber(2);
+            var signIndex = GetRandomNumber(signs.Length);
             selectedSign = signs[signIndex];
             lblSign.Content = selectedSign;
         }
@@ -85,9 +112,13 @@ namespace CursorTest
             switch (selectedSign)
             {
                 case 'x':
-                    return FirstAddent * SecondAddent;
+                    return FirstFactor * SecondFactor;
+                case '-':
+                    return FirstFactor - SecondFactor;
+                case '/':
+                    return FirstFactor / SecondFactor;
                 default:
-                    return FirstAddent + SecondAddent;
+                    return FirstFactor + SecondFactor;
             }
         }
 
@@ -95,18 +126,20 @@ namespace CursorTest
         {
             SwapOptions(true);
 
-            getFactors();
-
             getProblemType();
 
-            lblFirstAddent.Content = FirstAddent;
-            lblSecondAddent.Content = SecondAddent;
+            getFactors();
+
+            
+
+            lblFirstAddent.Content = FirstFactor;
+            lblSecondAddent.Content = SecondFactor;
 
             List<int> options = new List<int>();
             while (options.Count < 4)
             {
                 var option = GetRandomNumber(20);
-                if (options.Contains(option) || option == (FirstAddent + SecondAddent))
+                if (options.Contains(option) || option == (FirstFactor + SecondFactor))
                 {
                     continue;
                 }
